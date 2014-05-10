@@ -3,7 +3,7 @@ var Fish,
     fishScale = 0.5;
 
 var material = new THREE.MeshBasicMaterial({
-  map: THREE.ImageUtils.loadTexture('/fish2.png'),
+  map: THREE.ImageUtils.loadTexture('img/fish2.png'),
   transparent: true
   // opacity: 0.9
 });
