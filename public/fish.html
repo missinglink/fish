@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Fish</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="style/main.css" />
+  </head>
+  <body>
+
+    <div id="container"></div>
+    <script src="three.min.js"></script>
+    <script src="tween.min.js"></script>
+    <script src="OrbitControls.js"></script>
+    <script>
+
+        var fishies = []
+            totalFish = 1500,
+            spawnSpread = 4000;
+
+        var currentFrame = -1,
+            maxFrames = 30;
+
+        var rad90 = Math.PI * .5;
+
+    </script>
+
+    <script src="script/scene.js"></script>
+    <script src="script/Fish.js"></script>
+
+    <script>
+
+        // ---
+
+        init();
+        buildFish();
+        render();
+        animate();
+
+        function buildFish() {
+          for( var x=0; x<totalFish; x++ ){
+
+            var fish = new Fish();
+            fish.position.x = Math.round( Math.random() * spawnSpread - ( spawnSpread /2 ) );
+            fish.position.y = Math.round( Math.random() * spawnSpread - ( spawnSpread /2 ) );
+            fish.position.z = Math.round( Math.random() * spawnSpread - ( spawnSpread /2 ) );
+            
+            // fish.rotation.x = Math.round( Math.random() * 360 );
+            // fish.rotation.y = Math.round( Math.random() * 360 );
+            scene.add( fish );
+
+            fishies.push( fish );
+          }
+        }
+
+        function animate() {
+
+            currentFrame++;
+            if( currentFrame > maxFrames ) currentFrame = 0;
+
+            // note: three.js includes requestAnimationFrame shim
+            requestAnimationFrame( animate );
+
+            fishies.forEach( function( fish ){
+              fish.update();
+            });
+
+            TWEEN.update();
+            renderer.render( scene, camera );
+
+        }
+
+    </script>
+
+  </body>
+</html>

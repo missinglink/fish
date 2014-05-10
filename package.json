@@ -1,0 +1,15 @@
+{
+  "name": "fish",
+  "version": "0.0.0",
+  "description": "fish",
+  "dependencies": {
+    "express": "~3.4.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "coffee app.coffee",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Peter Johnson",
+  "license": "BSD-2-Clause"
+}
